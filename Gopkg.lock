@@ -131,6 +131,12 @@
   version = "v3.0.0"
 
 [[projects]]
+  name = "github.com/fsnotify/fsnotify"
+  packages = ["."]
+  revision = "c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9"
+  version = "v1.4.7"
+
+[[projects]]
   name = "github.com/ghodss/yaml"
   packages = ["."]
   revision = "0ca9ea5df5451ffdf184b4428c902747c2c11cd7"
@@ -281,6 +287,23 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/hashicorp/hcl"
+  packages = [
+    ".",
+    "hcl/ast",
+    "hcl/parser",
+    "hcl/printer",
+    "hcl/scanner",
+    "hcl/strconv",
+    "hcl/token",
+    "json/parser",
+    "json/scanner",
+    "json/token"
+  ]
+  revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
+
+[[projects]]
+  branch = "master"
   name = "github.com/howeyc/gopass"
   packages = ["."]
   revision = "bf9dde6d0d2c004a008c27aaee91170c786f6db8"
@@ -310,10 +333,55 @@
   version = "1.1.3"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/juju/collections"
+  packages = ["set"]
+  revision = "90152009b5f349bb218a9bf4a6034dd8437c031b"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/errors"
+  packages = ["."]
+  revision = "c7d06af17c68cd34c835053720b21f6549d9b0ee"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/gomaasapi"
+  packages = ["."]
+  revision = "abe11904dd8cd40f0777b7704ae60348a876542e"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/loggo"
+  packages = ["."]
+  revision = "584905176618da46b895b176c721b02c476b6993"
+
+[[projects]]
   name = "github.com/juju/ratelimit"
   packages = ["."]
   revision = "59fac5042749a5afb9af70e813da1dd5474f0167"
   version = "1.0.1"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/schema"
+  packages = ["."]
+  revision = "e4f08199aa80d3194008c0bd2e14ef5edc0e6be6"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/utils"
+  packages = [
+    ".",
+    "clock"
+  ]
+  revision = "c746c6e86f4fb2a04bc08d66b7a0f7e900d9cbab"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/juju/version"
+  packages = ["."]
+  revision = "b64dbd566305c836274f0268fa59183a52906b36"
 
 [[projects]]
   name = "github.com/kubernetes-incubator/apiserver-builder"
@@ -329,6 +397,18 @@
   ]
   revision = "e809ac2f9f0c238f08d08a876f8b3f499604f941"
   version = "v1.9-alpha.3"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/lxc/lxd"
+  packages = ["shared/logger"]
+  revision = "48dafdcba2a7d66f3ece52865d32b6e5341549e0"
+
+[[projects]]
+  name = "github.com/magiconair/properties"
+  packages = ["."]
+  revision = "c2353362d570a7bfa228149c62842019201cfb71"
+  version = "v1.8.0"
 
 [[projects]]
   branch = "master"
@@ -392,6 +472,12 @@
   version = "v1.1"
 
 [[projects]]
+  name = "github.com/pelletier/go-toml"
+  packages = ["."]
+  revision = "c01d1270ff3e442a8a57cddc1c92dc1138598194"
+  version = "v1.2.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/petar/GoLLRB"
   packages = ["llrb"]
@@ -443,16 +529,43 @@
   revision = "780932d4fbbe0e69b84c34c20f5c8d0981e109ea"
 
 [[projects]]
+  name = "github.com/spf13/afero"
+  packages = [
+    ".",
+    "mem"
+  ]
+  revision = "787d034dfe70e44075ccc060d346146ef53270ad"
+  version = "v1.1.1"
+
+[[projects]]
+  name = "github.com/spf13/cast"
+  packages = ["."]
+  revision = "8965335b8c7107321228e3e3702cab9832751bac"
+  version = "v1.2.0"
+
+[[projects]]
   name = "github.com/spf13/cobra"
   packages = ["."]
   revision = "7b2c5ac9fc04fc5efafb60700713d4fa609b777b"
   version = "v0.0.1"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/spf13/jwalterweatherman"
+  packages = ["."]
+  revision = "7c0cea34c8ece3fbeb2b27ab9b59511d360fb394"
+
+[[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
   revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
   version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/spf13/viper"
+  packages = ["."]
+  revision = "b5e8006cbee93ec955a89ab31e0e3ce3204f3736"
+  version = "v1.0.2"
 
 [[projects]]
   name = "github.com/ugorji/go"
@@ -463,7 +576,10 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
-  packages = ["ssh/terminal"]
+  packages = [
+    "pbkdf2",
+    "ssh/terminal"
+  ]
   revision = "88942b9c40a4c9d203b82b3731787b672d6e809b"
 
 [[projects]]
@@ -1024,9 +1140,71 @@
   ]
   revision = "50ae88d24ede7b8bad68e23c805b5d3da5c8abaf"
 
+[[projects]]
+  branch = "master"
+  name = "sigs.k8s.io/cluster-api"
+  packages = [
+    "cloud/google",
+    "cloud/google/clients",
+    "cloud/google/cmd/gce-controller/cluster-controller-app",
+    "cloud/google/cmd/gce-controller/cluster-controller-app/options",
+    "cloud/google/cmd/gce-controller/machine-controller-app",
+    "cloud/google/cmd/gce-controller/machine-controller-app/options",
+    "cloud/google/config",
+    "cloud/google/gceproviderconfig",
+    "cloud/google/gceproviderconfig/v1alpha1",
+    "cloud/google/machinesetup",
+    "cloud/vsphere",
+    "cloud/vsphere/namedmachines",
+    "cloud/vsphere/vsphereproviderconfig",
+    "cloud/vsphere/vsphereproviderconfig/v1alpha1",
+    "clusterctl/clusterdeployer",
+    "clusterctl/clusterdeployer/minikube",
+    "clusterctl/cmd",
+    "gcp-deployer/cmd",
+    "gcp-deployer/deploy",
+    "pkg/apis",
+    "pkg/apis/cluster",
+    "pkg/apis/cluster/common",
+    "pkg/apis/cluster/v1alpha1",
+    "pkg/apis/cluster/v1alpha1/testutil",
+    "pkg/cert",
+    "pkg/client/clientset_generated/clientset",
+    "pkg/client/clientset_generated/clientset/fake",
+    "pkg/client/clientset_generated/clientset/scheme",
+    "pkg/client/clientset_generated/clientset/typed/cluster/v1alpha1",
+    "pkg/client/clientset_generated/clientset/typed/cluster/v1alpha1/fake",
+    "pkg/client/informers_generated/externalversions",
+    "pkg/client/informers_generated/externalversions/cluster",
+    "pkg/client/informers_generated/externalversions/cluster/v1alpha1",
+    "pkg/client/informers_generated/externalversions/internalinterfaces",
+    "pkg/client/listers_generated/cluster/v1alpha1",
+    "pkg/clientcmd",
+    "pkg/cmd-runner",
+    "pkg/controller",
+    "pkg/controller/cluster",
+    "pkg/controller/config",
+    "pkg/controller/machine",
+    "pkg/controller/machinedeployment",
+    "pkg/controller/machinedeployment/util",
+    "pkg/controller/machineset",
+    "pkg/controller/noderefutil",
+    "pkg/controller/sharedinformers",
+    "pkg/errors",
+    "pkg/kubeadm",
+    "pkg/openapi",
+    "pkg/test-cmd-runner",
+    "pkg/util",
+    "tools/repair/cmd",
+    "tools/repair/util",
+    "tools/upgrader/cmd",
+    "tools/upgrader/util"
+  ]
+  revision = "cbc610ddc55fb85bb552df0e4cfd385f66443003"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "40cbed3bd870f59d6c28ecaaa706e5aab9d974a8b52a410e89442a1e522962c6"
+  inputs-digest = "9542d4a8ef67737fed6d48c7ad3f678d0b688dec101db562899035e7a9b79253"
   solver-name = "gps-cdcl"
   solver-version = 1
