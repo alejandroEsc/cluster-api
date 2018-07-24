@@ -26,6 +26,7 @@ import (
 	"github.com/spf13/cobra"
 	"sigs.k8s.io/cluster-api/cloud/google"
 	"sigs.k8s.io/cluster-api/cloud/vsphere"
+	"sigs.k8s.io/cluster-api/cloud/maas"
 	"sigs.k8s.io/cluster-api/clusterctl/clusterdeployer"
 	"sigs.k8s.io/cluster-api/clusterctl/clusterdeployer/minikube"
 	clusterv1 "sigs.k8s.io/cluster-api/pkg/apis/cluster/v1alpha1"
@@ -163,6 +164,8 @@ func getProvider(provider string) (clusterdeployer.ProviderDeployer, error) {
 	case "azure":
 		//Work being done at https://github.com/platform9/azure-provider
 		return nil, errors.New("Azure not yet implemented")
+	case "maas":
+		return maas.NewMachineActuator(maas.MachineActuatorParams{})
 	default:
 		return nil, fmt.Errorf("Unrecognized provider %v", provider)
 	}

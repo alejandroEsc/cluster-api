@@ -7,7 +7,7 @@ import (
 	"github.com/lxc/lxd/shared/logger"
 	"github.com/juju/gomaasapi"
 	"github.com/golang/glog"
-	m "github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/client"
+	m "github.com/alejandroEsc/maas-cli/pkg/maas"
 	"github.com/kubernetes-incubator/apiserver-builder/pkg/controller"
 	"os"
 	"k8s.io/client-go/kubernetes"
@@ -28,8 +28,9 @@ import (
 	v1core "k8s.io/client-go/kubernetes/typed/core/v1"
 	clusterapiclientsetscheme "sigs.k8s.io/cluster-api/pkg/client/clientset_generated/clientset/scheme"
 
-	"github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/machinesetup"
-	"github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/machineactuator"
+	"sigs.k8s.io/cluster-api/cloud/google/machinesetup"
+	"sigs.k8s.io/cluster-api/cloud/maas"
+
 )
 
 const (
@@ -66,7 +67,7 @@ func main() {
 	checkError(err)
 	maas := gomaasapi.NewMAAS(*authClient)
 
-	maasCLI := m.NewMaasClient(maas)
+	maasCLI := m.NewMaas(maas)
 
 	getMAASVersion(maasCLI)
 
@@ -168,11 +169,11 @@ func startMachineController(server *MachineControllerServer, shutdown <-chan str
 	if err != nil {
 		glog.Fatalf("Could not create config watch: %v", err)
 	}
-	params := machineactuator.MachineActuatorParams{
+	params := maas.MachineActuatorParams{
 		V1Alpha1Client:           client.ClusterV1alpha1(),
 		MachineSetupConfigGetter: configWatch,
 	}
-	actuator, err := machineactuator.NewMachineActuator(params)
+	actuator, err := maas.NewMachineActuator(params)
 
 	if err != nil {
 		glog.Fatalf("Could not create Google machine actuator: %v", err)
@@ -187,7 +188,7 @@ func startMachineController(server *MachineControllerServer, shutdown <-chan str
 
 
 
-func getMAASVersion(maasCLI *m.MAASclient) {
+func getMAASVersion(maasCLI *m.Maas) {
 	version, err := maasCLI.GetMAASVersion()
 	checkError(err)
 	jp, err := json.MarshalIndent(version, "", "\t")

@@ -11,27 +11,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package machineactuator
+package maas
 
 import(
 	"github.com/golang/glog"
 
 	clusterv1 "sigs.k8s.io/cluster-api/pkg/apis/cluster/v1alpha1"
 	"sigs.k8s.io/cluster-api/pkg/cert"
-	c "github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/client"
 	"sigs.k8s.io/cluster-api/pkg/kubeadm"
 	client "sigs.k8s.io/cluster-api/pkg/client/clientset_generated/clientset/typed/cluster/v1alpha1"
-	"github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/machinesetup"
 
 	"time"
 	"strings"
-	"os"
-	"io/ioutil"
+	"sigs.k8s.io/cluster-api/cloud/google/machinesetup"
 )
 
-type MAASMachineActuator struct {
+type MachineActuator struct {
 	CertificateAuthority     *cert.CertificateAuthority
-	MAASClient               c.MAASclient
 	kubeadm 				 *kubeadm.Kubeadm
 }
 
@@ -40,7 +36,7 @@ type MachineActuatorParams struct {
 	MachineSetupConfigGetter *machinesetup.ConfigWatch
 }
 
-func (ma *MAASMachineActuator) getKubeadmToken() (string, error) {
+func (ma *MachineActuator) getKubeadmToken() (string, error) {
 	tokenParams := kubeadm.TokenCreateParams{
 		Ttl: time.Duration(10) * time.Minute,
 	}
@@ -54,49 +50,23 @@ func (ma *MAASMachineActuator) getKubeadmToken() (string, error) {
 	return strings.TrimSpace(output), err
 }
 
-func NewMachineActuator(params MachineActuatorParams) (*GCEClient, error) {
-	computeService, err := getOrNewComputeServiceForMachine(params)
-	if err != nil {
-		return nil, err
-	}
 
-	scheme, err := gceconfigv1.NewScheme()
-	if err != nil {
-		return nil, err
-	}
-	codec, err := gceconfigv1.NewCodec()
-	if err != nil {
-		return nil, err
-	}
-
-	// Only applicable if it's running inside machine controller pod.
-	var privateKeyPath, user string
-	if _, err := os.Stat("/etc/sshkeys/private"); err == nil {
-		privateKeyPath = "/etc/sshkeys/private"
-
-		b, err := ioutil.ReadFile("/etc/sshkeys/user")
-		if err == nil {
-			user = string(b)
-		} else {
-			return nil, err
-		}
-	}
-
-	return &GCEClient{
-		certificateAuthority:   params.CertificateAuthority,
-		computeService:         computeService,
-		kubeadm:                getOrNewKubeadm(params),
-		scheme:                 scheme,
-		gceProviderConfigCodec: codec,
-		sshCreds: SshCreds{
-			privateKeyPath: privateKeyPath,
-			user:           user,
-		},
-		v1Alpha1Client:           params.V1Alpha1Client,
-		machineSetupConfigGetter: params.MachineSetupConfigGetter,
+// NewMachineActuator creates a new actuator to manage manchines.
+func NewMachineActuator(params MachineActuatorParams) (*MachineActuator, error) {
+	return &MachineActuator{
 	}, nil
 }
 
+
+// GetIP returns the IP where a master node is created.
+func (ma *MachineActuator) GetIP(cluster *clusterv1.Cluster, machine *clusterv1.Machine) (string, error) {
+	return "", nil
+}
+
+// GetKubeConfig returns the kubeconfig file.
+func  (ma *MachineActuator) GetKubeConfig(cluster *clusterv1.Cluster, master *clusterv1.Machine) (string, error) {
+	return "", nil
+}
 
 // Create the machine.
 func Create(*clusterv1.Cluster, *clusterv1.Machine) error {

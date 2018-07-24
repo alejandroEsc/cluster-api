@@ -1,0 +1,40 @@
+items:
+- apiVersion: "cluster.k8s.io/v1alpha1"
+  kind: Machine
+  metadata:
+    generateName: maas-master-
+    labels:
+      set: master
+  spec:
+    providerConfig:
+      value:
+        apiVersion: "maasproviderconfig/v1alpha1"
+        kind: "MAASMachineProviderConfig"
+        roles:
+        - Master
+        os: "ubuntu"
+        kernel: "ga-16.04"
+    versions:
+      kubelet: 1.10.5
+      controlPlane: 1.10.5
+    roles:
+    - Master
+- apiVersion: "cluster.k8s.io/v1alpha1"
+  kind: Machine
+  metadata:
+    generateName: maas-node-
+    labels:
+      set: node
+  spec:
+    providerConfig:
+      value:
+        apiVersion: "maasproviderconfig/v1alpha1"
+        kind: "MAASMachineProviderConfig"
+        roles:
+        - Node
+        os: "ubuntu"
+        kernel: "ga-16.04"
+    versions:
+      kubelet: 1.10.5
+    roles:
+    - Node

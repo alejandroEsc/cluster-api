@@ -43,6 +43,12 @@
   revision = "de5bf2ad457846296e2031421a34e2568e304e35"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/alejandroEsc/maas-cli"
+  packages = ["pkg/maas"]
+  revision = "b92184def92a3af05d304591f684611dfa779bfb"
+
+[[projects]]
   name = "github.com/asaskevich/govalidator"
   packages = ["."]
   revision = "ccb8e960c48f04d6935e72476ae4a51028f9e22f"
@@ -1140,71 +1146,9 @@
   ]
   revision = "50ae88d24ede7b8bad68e23c805b5d3da5c8abaf"
 
-[[projects]]
-  branch = "master"
-  name = "sigs.k8s.io/cluster-api"
-  packages = [
-    "cloud/google",
-    "cloud/google/clients",
-    "cloud/google/cmd/gce-controller/cluster-controller-app",
-    "cloud/google/cmd/gce-controller/cluster-controller-app/options",
-    "cloud/google/cmd/gce-controller/machine-controller-app",
-    "cloud/google/cmd/gce-controller/machine-controller-app/options",
-    "cloud/google/config",
-    "cloud/google/gceproviderconfig",
-    "cloud/google/gceproviderconfig/v1alpha1",
-    "cloud/google/machinesetup",
-    "cloud/vsphere",
-    "cloud/vsphere/namedmachines",
-    "cloud/vsphere/vsphereproviderconfig",
-    "cloud/vsphere/vsphereproviderconfig/v1alpha1",
-    "clusterctl/clusterdeployer",
-    "clusterctl/clusterdeployer/minikube",
-    "clusterctl/cmd",
-    "gcp-deployer/cmd",
-    "gcp-deployer/deploy",
-    "pkg/apis",
-    "pkg/apis/cluster",
-    "pkg/apis/cluster/common",
-    "pkg/apis/cluster/v1alpha1",
-    "pkg/apis/cluster/v1alpha1/testutil",
-    "pkg/cert",
-    "pkg/client/clientset_generated/clientset",
-    "pkg/client/clientset_generated/clientset/fake",
-    "pkg/client/clientset_generated/clientset/scheme",
-    "pkg/client/clientset_generated/clientset/typed/cluster/v1alpha1",
-    "pkg/client/clientset_generated/clientset/typed/cluster/v1alpha1/fake",
-    "pkg/client/informers_generated/externalversions",
-    "pkg/client/informers_generated/externalversions/cluster",
-    "pkg/client/informers_generated/externalversions/cluster/v1alpha1",
-    "pkg/client/informers_generated/externalversions/internalinterfaces",
-    "pkg/client/listers_generated/cluster/v1alpha1",
-    "pkg/clientcmd",
-    "pkg/cmd-runner",
-    "pkg/controller",
-    "pkg/controller/cluster",
-    "pkg/controller/config",
-    "pkg/controller/machine",
-    "pkg/controller/machinedeployment",
-    "pkg/controller/machinedeployment/util",
-    "pkg/controller/machineset",
-    "pkg/controller/noderefutil",
-    "pkg/controller/sharedinformers",
-    "pkg/errors",
-    "pkg/kubeadm",
-    "pkg/openapi",
-    "pkg/test-cmd-runner",
-    "pkg/util",
-    "tools/repair/cmd",
-    "tools/repair/util",
-    "tools/upgrader/cmd",
-    "tools/upgrader/util"
-  ]
-  revision = "cbc610ddc55fb85bb552df0e4cfd385f66443003"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9542d4a8ef67737fed6d48c7ad3f678d0b688dec101db562899035e7a9b79253"
+  inputs-digest = "2748c2be0ff447bf0ba1b4fb7694c5e68a9c758e8fc2b6e35a14b0f1de5948b5"
   solver-name = "gps-cdcl"
   solver-version = 1

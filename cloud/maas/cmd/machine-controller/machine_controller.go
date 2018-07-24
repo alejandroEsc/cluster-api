@@ -18,16 +18,14 @@ package machine_controller
 
 import (
 	"sigs.k8s.io/cluster-api/pkg/controller/config"
-	c "github.com/kubernetes-sigs/cluster-api/cloud/maas/pkg/client"
 )
 
 type MachineControllerServer struct {
 	CommonConfig            *config.Configuration
 	MachineSetupConfigsPath string
-	maasClient              *c.MAASclient
 }
 
-func NewMachineControllerServer(machineSetupConfigsPath string, massClient *c.MAASclient) *MachineControllerServer {
+func NewMachineControllerServer(machineSetupConfigsPath string) *MachineControllerServer {
 	s := MachineControllerServer{
 		CommonConfig: &config.ControllerConfig,
 		MachineSetupConfigsPath: machineSetupConfigsPath,
